@@ -12,17 +12,20 @@ use std::time::Duration;
 fn main() {
     let mut app = App::default();
 
+    // 添加背景顏色
+    app.insert_resource(ClearColor(Color::hex("071f3c").unwrap()));
+
     // 添加 Bevy的預設插件
     app.add_plugins(DefaultPlugins);
 
     // 添加 Rust-GPU插件
     app.add_plugin(RustGpuPlugin::default());
 
-    // 設置 `RustGpu<SimpleMaterial>`
-    app.add_plugin(RustGpuMaterialPlugin::<SimpleMaterial>::default());
+    // 設置 `RustGpu<ColorfulMaterial>`
+    app.add_plugin(RustGpuMaterialPlugin::<ColorfulMaterial>::default());
 
     // 輸出 渲染進入的入口點檔案
-    RustGpu::<SimpleMaterial>::export_to(ENTRY_POINTS_PATH);
+    RustGpu::<ColorfulMaterial>::export_to(ENTRY_POINTS_PATH);
 
     // 開始執行時的動作
     app.add_startup_system(setup);
@@ -38,7 +41,7 @@ fn setup(
     mut commands: Commands,
     asset_server: Res<AssetServer>,
     mut meshes: ResMut<Assets<Mesh>>,
-    mut materials: ResMut<Assets<RustGpu<SimpleMaterial>>>,
+    mut materials: ResMut<Assets<RustGpu<ColorfulMaterial>>>,
 ) {
     // 視角相機
     commands.spawn(Camera3dBundle {
@@ -49,7 +52,7 @@ fn setup(
     // 載入渲染檔案
     let shader = asset_server.load(SHADER_PATH);
 
-    // 生成方塊
+    // 生成方塊 + 使用移動方塊系統
     commands.spawn(MaterialMeshBundle {
         mesh: meshes.add(Mesh::from(shape::Cube { size: 1.0 })),
         transform: Transform::from_xyz(0.0, 0.0, 0.0),
@@ -76,24 +79,24 @@ const ENTRY_POINTS_PATH: &'static str = "crates/viewer/entry_points.json";
 pub enum VertexWarp {}
 
 impl EntryPoint for VertexWarp {
-    const NAME: &'static str = "vertex_warp";
+    const NAME: &'static str = "vertex_warp_colorful";
 }
 
 /// 表示"面"(fragment)的渲染入口點名稱為`fragment_normal`
 pub enum FragmentNormal {}
 
 impl EntryPoint for FragmentNormal {
-    const NAME: &'static str = "fragment_normal";
+    const NAME: &'static str = "fragment_normal_colorful";
 }
 
 /// Rust-GPU Material 與`VertexWarp` 和`FragmentNormal`做連結
 #[derive(Debug, Default, Copy, Clone, AsBindGroup, TypeUuid)]
 #[uuid = "f690fdae-d598-45ab-8225-97e2a3f056e0"]
-pub struct SimpleMaterial {}
+pub struct ColorfulMaterial {}
 
-impl Material for SimpleMaterial {}
+impl Material for ColorfulMaterial {}
 
-impl RustGpuMaterial for SimpleMaterial {
+impl RustGpuMaterial for ColorfulMaterial {
     type Vertex = VertexWarp;
     type Fragment = FragmentNormal;
 }

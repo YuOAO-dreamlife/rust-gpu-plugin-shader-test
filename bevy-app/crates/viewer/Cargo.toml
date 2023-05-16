@@ -4,12 +4,12 @@ version = "0.1.0"
 edition = "2021"
 
 [[example]]
-name = "simple-material"
-path = "examples/simple-material.rs"
+name = "colorful-material"
+path = "examples/colorful-material.rs"
 
 [[example]]
-name = "standard-material"
-path = "examples/standard-material.rs"
+name = "simple-material"
+path = "examples/simple-material.rs"
 
 [dependencies]
 bevy = { version = "0.10.0", features = ["spirv_shader_passthrough"] }

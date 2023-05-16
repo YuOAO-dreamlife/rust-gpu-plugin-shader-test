@@ -2028,7 +2028,8 @@ dependencies = [
 [[package]]
 name = "naga"
 version = "0.11.0"
-source = "git+https://github.com/bevy-rust-gpu/naga?branch=spv-in-break-if-v0.11.0#6aea73fa48853fd25eb07405dedd00b81709f376"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5eafe22a23b797c9bc227c6c896419b26b5bb88fa903417a3adaed08778850d5"
 dependencies = [
  "bit-set",
  "bitflags",
@@ -3552,3 +3553,8 @@ name = "xml-rs"
 version = "0.8.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d2d7d3948613f75c98fd9328cfdcc45acc4d360655289d0a7d4ec931392200a3"
+
+[[patch.unused]]
+name = "naga"
+version = "0.12.0"
+source = "git+https://github.com/gfx-rs/naga#423a069dcddc790fdf27d8c389fa4487f07fcc0a"

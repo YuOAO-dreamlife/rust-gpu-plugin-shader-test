@@ -1308,15 +1308,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "58baae561b85ca19b3122a9ddd35c8ec40c3bcd14fe89921824eae73f7baffbf"
 
 [[package]]
-name = "convert_case"
-version = "0.6.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ec182b0ca2f35d8fc196cf3404988fd8b8c739a4d270ff118a398feb0cbec1ca"
-dependencies = [
- "unicode-segmentation",
-]
-
-[[package]]
 name = "core-foundation"
 version = "0.9.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2933,15 +2924,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "rust-gpu-sdf"
-version = "0.1.0"
-source = "git+https://github.com/bevy-rust-gpu/rust-gpu-sdf?tag=prerelease#8a7a38584f4caef54a4cdd8cfb1a7164f8b5e32e"
-dependencies = [
- "rust-gpu-bridge",
- "type-fields",
-]
-
-[[package]]
 name = "rustc-demangle"
 version = "0.1.23"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3082,9 +3064,7 @@ name = "shader"
 version = "0.1.0"
 dependencies = [
  "bevy-pbr-rust",
- "permutate-macro",
  "rust-gpu-bridge",
- "rust-gpu-sdf",
  "spirv-std",
 ]
 
@@ -3461,35 +3441,10 @@ dependencies = [
 ]
 
 [[package]]
-name = "type-fields"
-version = "0.1.0"
-source = "git+https://github.com/bevy-rust-gpu/type-fields?tag=prerelease#4fbf57e6926c164eade696c65736503765150700"
-dependencies = [
- "type-fields-macros",
-]
-
-[[package]]
-name = "type-fields-macros"
-version = "0.1.0"
-source = "git+https://github.com/bevy-rust-gpu/type-fields-macros?tag=prerelease#f5c7fe25636a4525dfc1b415b6bd56b7a40eff51"
-dependencies = [
- "convert_case",
- "proc-macro2",
- "quote",
- "syn 2.0.15",
-]
-
-[[package]]
 name = "unicode-ident"
 version = "1.0.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e5464a87b239f13a63a501f2701565754bae92d243d4bb7eb12f6d57d2269bf4"
-
-[[package]]
-name = "unicode-segmentation"
-version = "1.10.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1dd624098567895118886609431a7c3b8f516e41d30e0643f03d94592a147e36"
 
 [[package]]
 name = "unicode-width"
